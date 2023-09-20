@@ -1,11 +1,13 @@
-import React from 'react'
+import Header from './Header'
+import { Main } from './style'
 
-function Layout({ children }: any) {
+function Layout({ children, userName, handelLogout }: any) {
     return (
         <div>
-            <h1>header</h1>
-
-            {children}
+            <Header userName={userName} handelLogout={handelLogout} />
+            <Main>
+                {children}
+            </Main>
         </div>
     )
 }

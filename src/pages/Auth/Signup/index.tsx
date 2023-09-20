@@ -3,6 +3,7 @@ import { AuthSection, SubmitBtn } from '../style'
 import TextField from '@mui/material/TextField'
 import { FormDataError, FormDataType } from '../../../Helper/Type';
 import { SCREEN } from '..';
+import { ToastService } from '../../../Helper/Alert';
 
 function Signup(props: any) {
   const [formData, setFormData] = useState<FormDataType>({
@@ -79,7 +80,6 @@ function Signup(props: any) {
 
     if (!hasError) {
       const userId = Date.now().toString();
-
       const userData = {
         id: userId,
         createdAt: new Date().toISOString(),
@@ -87,26 +87,12 @@ function Signup(props: any) {
       };
 
       const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
-
       const emailExists = existingUsers.some((user: FormDataType) => user.email === formData.email);
       const phoneExists = existingUsers.some((user: FormDataType) => user.phone === formData.phone);
 
-      console.log(emailExists,phoneExists);
-      
-
-      if (emailExists) {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          emailError: 'Email already exists',
-        }));
-        return;
-      }
-
-      if (phoneExists) {
-        setErrors((prevErrors) => ({
-          ...prevErrors,
-          phoneError: 'Phone number already exists',
-        }));
+      if (emailExists || phoneExists) {
+        const message = 'Email or Phone already exists';
+        ToastService.warning(message);
         return;
       }
 
@@ -128,9 +114,9 @@ function Signup(props: any) {
         passwordError: '',
         confirmPasswordError: '',
       });
-
+      const message = 'Account has been created';
+      ToastService.success(message);
       props.setScreen(SCREEN.LOGIN)
-      alert('Registration successful');
     }
   };
 
