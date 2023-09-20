@@ -30,3 +30,13 @@ export interface LoginErorType {
     emailError: string,
     passwordError: string,
 }
+
+export type UserData = {
+    id: string;
+    createdAt: string;
+    fullName: string;
+    phone: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  };

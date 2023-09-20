@@ -91,6 +91,9 @@ function Signup(props: any) {
       const emailExists = existingUsers.some((user: FormDataType) => user.email === formData.email);
       const phoneExists = existingUsers.some((user: FormDataType) => user.phone === formData.phone);
 
+      console.log(emailExists,phoneExists);
+      
+
       if (emailExists) {
         setErrors((prevErrors) => ({
           ...prevErrors,

@@ -11,8 +11,8 @@ export const SCREEN: Screen = {
 
 
 
-function Index() {
-  const [screen, setScreen] = React.useState<ScreenArgs>(SCREEN.SIGNIN);
+function Index(props:any) {
+  const [screen, setScreen] = React.useState<ScreenArgs>(SCREEN.LOGIN);
 
   const handelscreenType = (type: ScreenArgs) => {
     console.log('screen', screen);
@@ -42,7 +42,7 @@ function Index() {
         </div>
         <AuthBody>
           {screen === SCREEN.LOGIN && (
-            <Login />
+            <Login setAuthenticated={props.setAuthenticated}/>
           )}
 
           {screen === SCREEN.SIGNIN && (

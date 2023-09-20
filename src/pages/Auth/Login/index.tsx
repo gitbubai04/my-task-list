@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { AuthSection, SubmitBtn } from '../style'
 import TextField from '@mui/material/TextField'
 import { LoginErorType, LoginFormType } from '../../../Helper/Type'
+import { ToastService } from '../../../Helper/Alert'
+import { useNavigate } from 'react-router-dom'
 
-function Login() {
+function Login(props:any) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<LoginFormType>({
     email: '',
     password: ''
@@ -49,19 +52,21 @@ function Login() {
     const hasError = validateForm();
 
     if (!hasError) {
-      const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
-
-      // Check if a user with the provided email and password exists
-      const user = existingUsers.find(
+      const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');      
+      const user = existingUsers.find(        
         (u: any) => u.email === formData.email && u.password === formData.password
       );
 
       if (user) {
-        // User is authenticated, you can store user information in a context or state
-        // Redirect to a dashboard or protected route
-        alert('Login successful');
+        localStorage.setItem('userData', JSON.stringify(user));
+        const message = 'You are successfully login';
+        ToastService.success(message);
+        props.setAuthenticated(true);
+        navigate('/task')
+
       } else {
-        alert('Login error');
+        const message = 'Please enter a valid email or password';
+        ToastService.error(message);
       }
     }
   };
