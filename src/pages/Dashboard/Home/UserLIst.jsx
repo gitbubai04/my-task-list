@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import { IconButton } from '@mui/material';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import { EmpListProps } from '../../../Helper/Type'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {

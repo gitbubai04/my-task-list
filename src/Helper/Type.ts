@@ -39,4 +39,16 @@ export type UserData = {
     email: string;
     password: string;
     confirmPassword: string;
-  };
+};
+
+export type ModalType = {
+    open: boolean;
+    handelClose: () => void;
+};
+
+export type EmpListProps = {
+    handelOpen: () => void;
+};
+
+
+

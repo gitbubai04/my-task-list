@@ -41,7 +41,6 @@ function App() {
       <Routes>
         {authenticated ? (
           <>
-
             <Route
               path="/task"
               element={
@@ -63,7 +62,6 @@ function App() {
               }
             />
             <Route path="*" element={<Navigate to="/task" />} />
-
           </>
         ) : (
           <>
