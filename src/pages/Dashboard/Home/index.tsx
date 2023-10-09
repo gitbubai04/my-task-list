@@ -1,6 +1,7 @@
 import { Button, Pagination, TextField, Typography } from "@mui/material"
 import { DashboardStyle } from "./style"
 import UserList from "./UserLIst"
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 function Home() {
   return (
@@ -9,7 +10,7 @@ function Home() {
         <Typography component='h1'>Employees List (10)</Typography>
         <div className='head-right'>
           <TextField type="search" label="Search employee.." size="small"/>
-          <Button variant="contained">Add Employee</Button>
+          <Button variant="contained" startIcon={<AddCircleOutlineIcon/>}>Add Employee</Button>
         </div>
       </div>
 
