@@ -41,9 +41,22 @@ export type UserData = {
     confirmPassword: string;
 };
 
+export type Employee = {
+    address: string;
+    createdAt: string; 
+    dob: string; 
+    email: string;
+    id: string;
+    name: string;
+    note: string;
+    phone: string;
+    uId: string;
+  };
+
 export type ModalType = {
     open: boolean;
     handelClose: () => void;
+    fetchData:() => void;
 };
 
 export type EmpListProps = {

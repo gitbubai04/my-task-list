@@ -7,10 +7,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { IconButton } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import { EmpListProps } from '../../../Helper/Type'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -33,40 +32,53 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-export default function UserList() {
+export default function UserList(props) {
+    const { data } = props;
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                 <TableHead>
                     <TableRow>
-                        <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                        <StyledTableCell align="right">Calories</StyledTableCell>
-                        <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+                        <StyledTableCell>Full Name</StyledTableCell>
+                        <StyledTableCell align="right">Phone</StyledTableCell>
+                        <StyledTableCell align="right">Email</StyledTableCell>
+                        <StyledTableCell align="right">Address</StyledTableCell>
                         <StyledTableCell align="right">Action</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {Array.from({ length: 6 }, (index) => (
-                        <StyledTableRow >
-                            <StyledTableCell component="th" scope="row">
-                                hsdhsdhsd
-                            </StyledTableCell>
-                            <StyledTableCell align="right"> hsdhsdhsd</StyledTableCell>
-                            <StyledTableCell align="right"> hsdhsdhsd</StyledTableCell>
-                            <StyledTableCell align="right"> hsdhsdhsd</StyledTableCell>
-                            <StyledTableCell align="right"> hsdhsdhsd</StyledTableCell>
-                            <StyledTableCell align="right">
-                                <IconButton>
-                                    <ModeEditOutlineOutlinedIcon />
-                                </IconButton>
-                                <IconButton>
-                                    <DeleteOutlineOutlinedIcon />
-                                </IconButton>
-                            </StyledTableCell>
-                        </StyledTableRow>
-                    ))}
+                    {data.length > 0 ?
+                        <>
+                            {data.map((e, i) => (
+                                <StyledTableRow key={i}>
+                                    <StyledTableCell component="th" scope="row">
+                                        {e.name}
+                                    </StyledTableCell>
+                                    <StyledTableCell align="right">{e.phone}</StyledTableCell>
+                                    <StyledTableCell align="right">{e.email}</StyledTableCell>
+                                    <StyledTableCell align="right">{e.address}</StyledTableCell>
+                                    <StyledTableCell align="right">
+                                        <IconButton>
+                                            <ModeEditOutlineOutlinedIcon />
+                                        </IconButton>
+                                        <IconButton>
+                                            <DeleteOutlineOutlinedIcon />
+                                        </IconButton>
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                            ))}
+                        </>
+                        :
+                        <Box sx={{
+                            height: '80px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            position: 'relative',
+                            right: '-151%',
+                        }}>No Data!</Box>
+                    }
+
                 </TableBody>
             </Table>
         </TableContainer>
