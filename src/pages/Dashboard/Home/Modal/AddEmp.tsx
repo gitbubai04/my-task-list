@@ -8,7 +8,7 @@ import { Grid, TextField } from '@mui/material';
 import { StyleModalBody } from './style';
 import { ToastService } from '../../../../Helper/Alert';
 
-export default function AddEmployee({ open, handelClose, fetchData }: ModalType) {
+export default function AddEmployee({ open, handelClose, fetchData, adminId }: ModalType) {
     const [field, setField] = React.useState({
         name: '',
         dob: '',
@@ -105,6 +105,7 @@ export default function AddEmployee({ open, handelClose, fetchData }: ModalType)
         const id = Date.now().toString();
         if (!hasError) {
             const userData = {
+                created_by: adminId,
                 id: id,
                 uId: userId,
                 createdAt: new Date().toISOString(),
@@ -140,7 +141,7 @@ export default function AddEmployee({ open, handelClose, fetchData }: ModalType)
                 addressError: '',
                 noteError: ''
             });
-            
+
             const message = 'Employee has been created';
             ToastService.success(message);
             console.log(userData);

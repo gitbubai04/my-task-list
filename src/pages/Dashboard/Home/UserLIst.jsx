@@ -33,7 +33,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function UserList(props) {
-    const { data } = props;
+    const { data, deleteItem } = props;
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -61,7 +61,7 @@ export default function UserList(props) {
                                         <IconButton>
                                             <ModeEditOutlineOutlinedIcon />
                                         </IconButton>
-                                        <IconButton>
+                                        <IconButton onClick={() => deleteItem(e.id)}>
                                             <DeleteOutlineOutlinedIcon />
                                         </IconButton>
                                     </StyledTableCell>

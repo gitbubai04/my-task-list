@@ -46,7 +46,7 @@ function App() {
               element={
                 <Suspense fallback={<Loading />}>
                   <Layout handelLogout={handelLogout} userName={userData?.fullName}>
-                    <HomePage />
+                    <HomePage userData={userData}/>
                   </Layout>
                 </Suspense>
               }

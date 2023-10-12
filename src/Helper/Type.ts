@@ -42,21 +42,23 @@ export type UserData = {
 };
 
 export type Employee = {
+    created_by: string;
     address: string;
-    createdAt: string; 
-    dob: string; 
+    createdAt: string;
+    dob: string;
     email: string;
     id: string;
     name: string;
     note: string;
     phone: string;
     uId: string;
-  };
+};
 
 export type ModalType = {
+    adminId: string;
     open: boolean;
     handelClose: () => void;
-    fetchData:() => void;
+    fetchData: () => void;
 };
 
 export type EmpListProps = {

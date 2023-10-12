@@ -10,7 +10,6 @@ export const SCREEN: Screen = {
 };
 
 
-
 function Index(props:any) {
   const [screen, setScreen] = React.useState<ScreenArgs>(SCREEN.LOGIN);
 
