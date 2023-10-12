@@ -5,11 +5,17 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useEffect, useState } from "react";
 import AddEmployee from "./Modal/AddEmp";
 import { Employee } from "../../../Helper/Type";
+import { Alert, ToastService } from "../../../Helper/Alert";
 
+const itemsPerPage = 6;
 function Home(props: any) {
   const [open, setOpen] = useState(false)
   const [data, setData] = useState<Employee[]>([])
   const [searchValue, setSearchValue] = useState('')
+  const [currentPage, setCurrentPage] = useState(1);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = data.slice(startIndex, endIndex);
 
   const { userData } = props;
 
@@ -27,27 +33,34 @@ function Home(props: any) {
   }
 
   const fetchData = () => {
-    const empData = JSON.parse(localStorage.getItem('Employees') || '[]');
-    const filteredData = empData.filter((employee: Employee) => employee.created_by === userData.id) || [];
+    // const empData = JSON.parse(localStorage.getItem('Employees') || '[]');
+    // const filteredData = empData.filter((employee: Employee) => employee.created_by === userData.id) || [];
 
-    localStorage.setItem(`Employees_${userData.id}`, JSON.stringify(filteredData))
+    // localStorage.setItem(`Employees_${userData.id}`, JSON.stringify(filteredData))
     const dataByUser = JSON.parse(localStorage.getItem(`Employees_${userData.id}`) || '[]');
-
     setData(dataByUser)
   }
 
-  const deleteItem = (itemToDelete: string) => {
-    const updatedItems = data.filter(item => item.id !== itemToDelete);
-    localStorage.setItem(`Employees_${userData.id}`, JSON.stringify(updatedItems));
-    setData(updatedItems);
-  };
+  const deleteItem = (itemToDelete: { id: string, name: string }) => {
+    Alert.confirm(`Are you sure you want to delete ${itemToDelete.name}?`).then((res) => {
+      if (res) {
+        const updatedItems = data.filter(item => item.id !== itemToDelete.id);
+        localStorage.setItem(`Employees_${userData.id}`, JSON.stringify(updatedItems));
+        setData(updatedItems);
+        const message = `${itemToDelete.name} has been Remove`;
+        ToastService.success(message);
+      }
+    }).catch((err) => {
+      // Handle the error, if needed
+    });
+  }
 
   useEffect(() => {
     fetchData()
   }, [userData])
 
 
-  const filterData = data.filter(item =>
+  const filterData = currentData.filter(item =>
     item.name.toLowerCase().includes(searchValue.toLowerCase()) ||
     item.phone.toLowerCase().includes(searchValue.toLowerCase()) ||
     item.email.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -71,7 +84,15 @@ function Home(props: any) {
           <UserList data={filterData} deleteItem={deleteItem} />
         </div>
         <div className="pagination">
-          <Pagination count={10} shape="rounded" />
+          {data.length > 6 &&
+            <Pagination
+              count={Math.ceil(data.length / itemsPerPage)}
+              page={currentPage}
+              shape="rounded"
+              color="primary"
+              onChange={(event, page) => setCurrentPage(page)} />
+          }
+
         </div>
       </DashboardStyle>
     </>

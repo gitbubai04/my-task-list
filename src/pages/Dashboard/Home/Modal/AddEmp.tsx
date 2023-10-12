@@ -17,7 +17,7 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
         address: '',
         note: ''
     })
-
+   
     const [fieldError, setFieldError] = React.useState({
         nameError: '',
         dobError: '',
@@ -104,6 +104,7 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
         const userId = createUserID();
         const id = Date.now().toString();
         if (!hasError) {
+            
             const userData = {
                 created_by: adminId,
                 id: id,
@@ -111,7 +112,7 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
                 createdAt: new Date().toISOString(),
                 ...field,
             };
-            const existingUsers = JSON.parse(localStorage.getItem('Employees') || '[]');
+            const existingUsers = JSON.parse(localStorage.getItem(`Employees_${adminId}`) || '[]');
             const emailExists = existingUsers.some((user: any) => user.email === field.email);
             const phoneExists = existingUsers.some((user: any) => user.phone === field.phone);
 
@@ -122,7 +123,7 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
             }
 
             existingUsers.push(userData);
-            localStorage.setItem('Employees', JSON.stringify(existingUsers));
+            localStorage.setItem(`Employees_${adminId}`, JSON.stringify(existingUsers));
 
             setField({
                 name: '',
@@ -144,7 +145,6 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
 
             const message = 'Employee has been created';
             ToastService.success(message);
-            console.log(userData);
             handelClose()
             fetchData()
         }
@@ -234,6 +234,7 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
                                 helperText={fieldError.addressError}
                             />
                         </Grid>
+                       
                     </Grid>
                 </StyleModalBody>
                 <DialogActions>

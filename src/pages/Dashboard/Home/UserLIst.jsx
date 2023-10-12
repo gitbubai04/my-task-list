@@ -61,7 +61,7 @@ export default function UserList(props) {
                                         <IconButton>
                                             <ModeEditOutlineOutlinedIcon />
                                         </IconButton>
-                                        <IconButton onClick={() => deleteItem(e.id)}>
+                                        <IconButton onClick={() => deleteItem({ id: e.id, name: e.name })}>
                                             <DeleteOutlineOutlinedIcon />
                                         </IconButton>
                                     </StyledTableCell>
