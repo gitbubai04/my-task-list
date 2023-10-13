@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import { Box, IconButton } from '@mui/material';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -33,7 +34,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function UserList(props) {
-    const { data, deleteItem } = props;
+    const { data, deleteItem,viewItem } = props;
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -60,6 +61,9 @@ export default function UserList(props) {
                                     <StyledTableCell align="right">
                                         <IconButton>
                                             <ModeEditOutlineOutlinedIcon />
+                                        </IconButton>
+                                        <IconButton onClick={() => viewItem({ id: e.id, name: e.name })}>
+                                            <VisibilityOutlinedIcon />
                                         </IconButton>
                                         <IconButton onClick={() => deleteItem({ id: e.id, name: e.name })}>
                                             <DeleteOutlineOutlinedIcon />

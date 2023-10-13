@@ -35,6 +35,81 @@ export const DashboardStyle = styled.div`
         justify-content:end;
     }
 
+    .card{
+        width: 100%;
+        height: fit-content;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 15px;
+        padding: 25px 55px;
+
+        .details-wrap{
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-button{
+            display:flex;
+            justify-content:end;
+            margin-top:25px;
+        }
+
+        .left{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            width:30%;
+            .e-name{
+                font-size: 35px;
+                text-transform: capitalize;
+                font-weight: 600;
+                letter-spacing: 1px;
+                color:#1976d2;  
+                margin-bottom:15px; 
+            }
+            .name{
+                font-size: 18px;
+                text-transform: capitalize;
+                font-weight: 600;
+                letter-spacing: 1px;
+                color:#1976d266;  
+                margin-bottom:15px; 
+            }
+
+            .MuiAvatar-root{
+                font-size: 45px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+        }
+
+        .right{
+            width:70%;
+
+            .right-divs{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                align-items:center;
+                .child{
+                    width:48%;
+                }
+            }
+
+            .text{
+                font-size: 18px;
+                color: #000000cc;
+                margin-bottom:10px;
+
+                span{
+                    color: #000000a6;
+                }
+            }
+        }
+       
+    }
+
     @media(max-width:999px){
         width:95%;
 

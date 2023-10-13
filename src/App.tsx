@@ -2,7 +2,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './css/style.css'
 import Loading from './components/Loading'
-import { HomePage, Login, MyProfile } from './pages'
+import { HomePage, Login, MyProfile, EmpView } from './pages'
 import { UserData } from './Helper/Type';
 import Layout from './components/Layout';
 import { ToastService } from './Helper/Alert';
@@ -14,6 +14,13 @@ function App() {
   });
 
   const [userData, setUserData] = useState<UserData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
   // const nav = useNavigate()
 
   const handelLogout = () => {
@@ -42,11 +49,21 @@ function App() {
         {authenticated ? (
           <>
             <Route
-              path="/task"
+              path="/employees"
               element={
                 <Suspense fallback={<Loading />}>
                   <Layout handelLogout={handelLogout} userName={userData?.fullName}>
-                    <HomePage userData={userData}/>
+                    <HomePage userData={userData} />
+                  </Layout>
+                </Suspense>
+              }
+            />
+            <Route
+              path="/employee/:id"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <Layout handelLogout={handelLogout} userName={userData?.fullName}>
+                    <EmpView />
                   </Layout>
                 </Suspense>
               }
@@ -56,7 +73,7 @@ function App() {
               element={
                 <Suspense fallback={<Loading />}>
                   <Layout handelLogout={handelLogout} userName={userData?.fullName}>
-                   <MyProfile userData={userData}/>
+                    <MyProfile userData={userData} />
                   </Layout>
                 </Suspense>
               }

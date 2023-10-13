@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 import AddEmployee from "./Modal/AddEmp";
 import { Employee } from "../../../Helper/Type";
 import { Alert, ToastService } from "../../../Helper/Alert";
+import { useNavigate } from "react-router-dom";
 
 const itemsPerPage = 6;
 function Home(props: any) {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false)
   const [data, setData] = useState<Employee[]>([])
   const [searchValue, setSearchValue] = useState('')
@@ -55,6 +57,26 @@ function Home(props: any) {
     });
   }
 
+  const viewItem = (itemToDelete: { id: string, name: string }) => {
+    if (data) {
+      const existingUsers = JSON.parse(localStorage.getItem(`Employees_${userData.id}`) || '[]');
+      const employee = existingUsers.find(
+        (u: any) => u.id === itemToDelete.id
+      );
+
+      if (employee) {
+        localStorage.setItem('EmployeeData', JSON.stringify(employee));
+        const message = `${itemToDelete.name}'s Data fetch successfully`;
+        ToastService.success(message);
+        navigate(`/employee/${itemToDelete.name}_${itemToDelete.id}`)
+
+      } else {
+        const message = 'Employee not found';
+        ToastService.error(message);
+      }
+    }
+  }
+
   useEffect(() => {
     fetchData()
   }, [userData])
@@ -81,7 +103,7 @@ function Home(props: any) {
         </div>
 
         <div className="list_part">
-          <UserList data={filterData} deleteItem={deleteItem} />
+          <UserList data={filterData} deleteItem={deleteItem} viewItem={viewItem} />
         </div>
         <div className="pagination">
           {data.length > 6 &&

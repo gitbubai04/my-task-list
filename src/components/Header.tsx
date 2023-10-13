@@ -9,7 +9,7 @@ const Header = ({ userName, handelLogout }: any) => {
     const navigate = useNavigate();
 
     const handleMyTaskClick = () => {
-        navigate('/task');
+        navigate('/employees');
     };
 
     const handleMyProfileClick = () => {
@@ -22,7 +22,7 @@ const Header = ({ userName, handelLogout }: any) => {
                 <Typography variant="h6">Welcome, {userName}</Typography>
                 <div style={{ marginLeft: 'auto' }}>
                     <Button color="inherit" onClick={handleMyTaskClick}>
-                        My Task
+                        Employees
                     </Button>
                     <Button color="inherit" onClick={handleMyProfileClick}>
                         My Profile

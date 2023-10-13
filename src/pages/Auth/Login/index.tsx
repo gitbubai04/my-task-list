@@ -62,7 +62,7 @@ function Login(props:any) {
         const message = 'You are successfully login';
         ToastService.success(message);
         props.setAuthenticated(true);
-        navigate('/task')
+        navigate('/employees')
 
       } else {
         const message = 'Please enter a valid email or password';

@@ -65,5 +65,19 @@ export type EmpListProps = {
     handelOpen: () => void;
 };
 
+export type EmpDataType = {
+    created_by: string;
+    id: string;
+    uId: string;
+    createdAt: string;
+    name: string;
+    dob: string;
+    email: string;
+    phone: string;
+    address: string;
+    note: string;
+}
+
+
 
 
