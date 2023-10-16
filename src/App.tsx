@@ -78,7 +78,7 @@ function App() {
                 </Suspense>
               }
             />
-            <Route path="*" element={<Navigate to="/task" />} />
+            <Route path="*" element={<Navigate to="/employees" />} />
           </>
         ) : (
           <>
