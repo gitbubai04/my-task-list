@@ -61,6 +61,14 @@ export type ModalType = {
     fetchData: () => void;
 };
 
+export type EditModalType = {
+    adminId: string;
+    open: boolean;
+    handelClose: () => void;
+    fetchData: () => void;
+    editData:any;
+};
+
 export type EmpListProps = {
     handelOpen: () => void;
 };

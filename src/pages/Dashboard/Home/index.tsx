@@ -7,17 +7,20 @@ import AddEmployee from "./Modal/AddEmp";
 import { Employee } from "../../../Helper/Type";
 import { Alert, ToastService } from "../../../Helper/Alert";
 import { useNavigate } from "react-router-dom";
+import EditEmp from "./Modal/EditEmp";
 
 const itemsPerPage = 6;
 function Home(props: any) {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false)
+  const [Editopen, setEditOpen] = useState(false)
   const [data, setData] = useState<Employee[]>([])
   const [searchValue, setSearchValue] = useState('')
   const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentData = data.slice(startIndex, endIndex);
+  const [editData, setEditData] = useState({})
 
   const { userData } = props;
 
@@ -25,8 +28,19 @@ function Home(props: any) {
     setOpen(true)
   }
 
+  const handelEditOpen = (itemToDelete: { id: string, name: string }) => {
+    setEditOpen(true)
+    const editData = data.find((item) => itemToDelete.id === item.id);
+    setEditData(editData || {});
+    console.log(editData);
+  }
+
   const handelClose = () => {
     setOpen(false)
+  }
+
+  const handelEditClose = () => {
+    setEditOpen(false)
   }
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,6 +105,7 @@ function Home(props: any) {
 
   return (
     <>
+      <EditEmp open={Editopen} handelClose={handelEditClose} fetchData={fetchData} adminId={userData.id} editData={editData}/>
       <AddEmployee open={open} handelClose={handelClose} fetchData={fetchData} adminId={userData.id} />
       <DashboardStyle>
         <div className="header_part">
@@ -103,7 +118,7 @@ function Home(props: any) {
         </div>
 
         <div className="list_part">
-          <UserList data={filterData} deleteItem={deleteItem} viewItem={viewItem} />
+          <UserList data={filterData} deleteItem={deleteItem} viewItem={viewItem} handelEditOpen={handelEditOpen} />
         </div>
         <div className="pagination">
           {data.length > 6 &&

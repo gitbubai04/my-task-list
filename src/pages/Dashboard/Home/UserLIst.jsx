@@ -34,7 +34,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function UserList(props) {
-    const { data, deleteItem,viewItem } = props;
+    const { data, deleteItem, viewItem, handelEditOpen } = props;
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -59,7 +59,7 @@ export default function UserList(props) {
                                     <StyledTableCell align="right">{e.email}</StyledTableCell>
                                     <StyledTableCell align="right">{e.address}</StyledTableCell>
                                     <StyledTableCell align="right">
-                                        <IconButton>
+                                        <IconButton onClick={() => handelEditOpen({ id: e.id, name: e.name })}>
                                             <ModeEditOutlineOutlinedIcon />
                                         </IconButton>
                                         <IconButton onClick={() => viewItem({ id: e.id, name: e.name })}>
