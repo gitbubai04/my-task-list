@@ -26,7 +26,6 @@ function ViewEmp() {
     return (
         <DashboardStyle>
             <div className='card'>
-
                 {empData ?
                     <div className='details-wrap'>
                         <div className='left'>

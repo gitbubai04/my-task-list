@@ -52,13 +52,13 @@ export default function UserList(props) {
                         <>
                             {data.map((e, i) => (
                                 <StyledTableRow key={i}>
-                                    <StyledTableCell component="th" scope="row">
+                                    <StyledTableCell component="th" scope="row" sx={{ whiteSpace: 'nowrap' }}>
                                         {e.name}
                                     </StyledTableCell>
-                                    <StyledTableCell align="right">{e.phone}</StyledTableCell>
-                                    <StyledTableCell align="right">{e.email}</StyledTableCell>
-                                    <StyledTableCell align="right">{e.address}</StyledTableCell>
-                                    <StyledTableCell align="right">
+                                    <StyledTableCell align="right" sx={{ whiteSpace: 'nowrap' }}>{e.phone}</StyledTableCell>
+                                    <StyledTableCell align="right" sx={{ whiteSpace: 'nowrap' }}>{e.email}</StyledTableCell>
+                                    <StyledTableCell align="right" sx={{ minWidth: 200 }}>{e.address}</StyledTableCell>
+                                    <StyledTableCell align="right" sx={{ minWidth: 150 }}>
                                         <IconButton onClick={() => handelEditOpen({ id: e.id, name: e.name })}>
                                             <ModeEditOutlineOutlinedIcon />
                                         </IconButton>

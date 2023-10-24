@@ -57,15 +57,16 @@ export const DashboardStyle = styled.div`
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
+           
             width:30%;
+
             .e-name{
                 font-size: 35px;
                 text-transform: capitalize;
                 font-weight: 600;
                 letter-spacing: 1px;
                 color:#1976d2;  
-                margin-bottom:15px; 
+               
             }
             .name{
                 font-size: 18px;
@@ -102,9 +103,33 @@ export const DashboardStyle = styled.div`
                 margin-bottom:10px;
 
                 span{
-                    color: #000000a6;
+                    color: #00000059;
                 }
             }
+        }
+
+        @media(max-width:767px){
+            padding:25px;
+
+            .details-wrap{
+                flex-direction:column
+            }
+
+            .right,
+            .left{
+                width:100%;
+            }
+
+            .right{
+                .right-divs{
+                    flex-direction:column;
+
+                    .child{
+                        width:100%;
+                    }
+                }
+            }
+        
         }
        
     }

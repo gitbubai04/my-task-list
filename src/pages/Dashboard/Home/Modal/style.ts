@@ -7,4 +7,8 @@ export const StyleModalBody = styled(DialogContent)`
     .form-field{
         margin-bottom:25px;
     }
+
+    @media(max-width:767px){
+         width:fit-content;
+    }
 `

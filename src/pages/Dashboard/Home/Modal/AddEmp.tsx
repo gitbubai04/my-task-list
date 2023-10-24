@@ -163,7 +163,7 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
             <form onSubmit={handelSubmit}>
                 <StyleModalBody>
                     <Grid container spacing={2}>
-                        <Grid item md={12}>
+                        <Grid item md={12} xs={12}>
                             <TextField
                                 name='name'
                                 fullWidth
@@ -174,7 +174,7 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
                                 helperText={fieldError.nameError}
                             />
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} xs={12}>
                             <TextField
                                 name='dob'
                                 fullWidth
@@ -187,7 +187,7 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
                                 helperText={fieldError.dobError}
                             />
                         </Grid>
-                        <Grid item md={6}>
+                        <Grid item md={6} xs={12}>
                             <TextField
                                 name='email'
                                 fullWidth
@@ -198,7 +198,7 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
                                 helperText={fieldError.emailError}
                             />
                         </Grid>
-                        <Grid item md={6}>
+                        <Grid item md={6} xs={12}>
                             <TextField
                                 name='phone'
                                 fullWidth
@@ -209,7 +209,7 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
                                 helperText={fieldError.phoneError}
                             />
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} xs={12}>
                             <TextField
                                 name='note'
                                 fullWidth
@@ -222,7 +222,7 @@ export default function AddEmployee({ open, handelClose, fetchData, adminId }: M
 
                             />
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} xs={12}>
                             <TextField
                                 name='address'
                                 fullWidth

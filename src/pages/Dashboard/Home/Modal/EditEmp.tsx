@@ -95,8 +95,7 @@ function EditEmp({ open, handelClose, fetchData, adminId, editData }: EditModalT
             const existingData = JSON.parse(localStorage.getItem(`Employees_${adminId}`) || '[]');
 
             const index = existingData.findIndex((item: any) => item.id === formData.id);
-            console.log('index',index);
-            
+
             if (index !== -1) {
                 existingData[index] = formData;
                 localStorage.setItem(`Employees_${adminId}`, JSON.stringify(existingData));
@@ -126,7 +125,7 @@ function EditEmp({ open, handelClose, fetchData, adminId, editData }: EditModalT
             <form onSubmit={handelSubmit}>
                 <StyleModalBody>
                     <Grid container spacing={2}>
-                        <Grid item md={12}>
+                        <Grid item md={12} xs={12}>
                             <TextField
                                 name='name'
                                 fullWidth
@@ -137,7 +136,7 @@ function EditEmp({ open, handelClose, fetchData, adminId, editData }: EditModalT
                                 helperText={fieldError.nameError}
                             />
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} xs={12} >
                             <TextField
                                 name='dob'
                                 fullWidth
@@ -150,7 +149,7 @@ function EditEmp({ open, handelClose, fetchData, adminId, editData }: EditModalT
                                 helperText={fieldError.dobError}
                             />
                         </Grid>
-                        <Grid item md={6}>
+                        <Grid item md={6} xs={12}>
                             <TextField
                                 name='email'
                                 fullWidth
@@ -162,7 +161,7 @@ function EditEmp({ open, handelClose, fetchData, adminId, editData }: EditModalT
                                 helperText={fieldError.emailError}
                             />
                         </Grid>
-                        <Grid item md={6}>
+                        <Grid item md={6} xs={12}>
                             <TextField
                                 name='phone'
                                 fullWidth
@@ -173,7 +172,7 @@ function EditEmp({ open, handelClose, fetchData, adminId, editData }: EditModalT
                                 helperText={fieldError.phoneError}
                             />
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} xs={12}>
                             <TextField
                                 name='note'
                                 fullWidth
@@ -185,7 +184,7 @@ function EditEmp({ open, handelClose, fetchData, adminId, editData }: EditModalT
                                 helperText={fieldError.noteError}
                             />
                         </Grid>
-                        <Grid item md={12}>
+                        <Grid item md={12} xs={12}>
                             <TextField
                                 name='address'
                                 fullWidth
