@@ -34,6 +34,10 @@ export const AuthWrap = styled.section`
             color: #fff;
         }
     }
+
+    @media(max-width:767px){
+        width:100%;
+    }
 `
 
 export const AuthBtn = styled.button`

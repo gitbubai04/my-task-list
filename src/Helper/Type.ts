@@ -21,6 +21,11 @@ export interface FormDataError {
     confirmPasswordError: string,
 }
 
+export type ChangePasswordError = {
+    passwordError: string,
+    confirmPasswordError: string
+}
+
 export type LoginFormType = {
     email: string,
     password: string

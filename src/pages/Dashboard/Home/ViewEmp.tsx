@@ -27,7 +27,7 @@ function ViewEmp() {
         <DashboardStyle>
             <div className='card'>
                 {empData ?
-                    <div className='details-wrap'>
+                    <div className='details-wrap fd-c w-100'>
                         <div className='left'>
                             {empData.name &&
                                 <Avatar sx={{ width: 130, height: 130, bgcolor: '#1976d2' }}>{formatName(empData.name)}</Avatar>

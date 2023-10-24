@@ -30,13 +30,16 @@ function App() {
     localStorage.removeItem('userData')
   }
 
-  useEffect(() => {
+  const getUserData = () => {
     const storedUserData = localStorage.getItem('userData');
-
     if (storedUserData) {
       const parsedUserData = JSON.parse(storedUserData);
       setUserData(parsedUserData);
     }
+  }
+
+  useEffect(() => {
+    getUserData()
   }, [authenticated])
 
   useEffect(() => {
@@ -73,7 +76,7 @@ function App() {
               element={
                 <Suspense fallback={<Loading />}>
                   <Layout handelLogout={handelLogout} userName={userData?.fullName}>
-                    <MyProfile userData={userData} />
+                    <MyProfile userData={userData} getUserData={getUserData} />
                   </Layout>
                 </Suspense>
               }

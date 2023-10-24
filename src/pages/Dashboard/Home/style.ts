@@ -8,6 +8,51 @@ export const DashboardStyle = styled.div`
         width:80%;
     }
 
+    .fd-c{
+        flex-direction:column;
+    }
+
+    .w-100{
+        width:100% !important;
+        margin-top:25px;
+    }
+
+    .name-box{
+        margin-top: 15px;
+            height: 46px;
+        display:flex;
+        gap:15px;
+        align-items:center;
+
+        h1{
+            line-height:normal;
+        }
+    }
+
+    .form-box{
+        margin-top: 15px;
+            height: 46px;
+        display:flex;
+        align-items:center;
+
+        .btn{
+            svg{
+                font-size:1.8rem;
+            }
+        }
+        .ok{
+            svg{
+                color:#228b22;
+            }
+        }
+
+        .close{
+            svg{
+                color:#ff4500;
+            }
+        }
+    }
+
     .header_part{
         display: flex;
         justify-content:space-between;
@@ -58,7 +103,7 @@ export const DashboardStyle = styled.div`
             flex-direction: column;
             align-items: center;
            
-            width:30%;
+            /* width:30%; */
 
             .e-name{
                 font-size: 35px;
@@ -66,6 +111,10 @@ export const DashboardStyle = styled.div`
                 font-weight: 600;
                 letter-spacing: 1px;
                 color:#1976d2;  
+
+                @media(max-width: 767px){
+                    font-size: 25px;
+                }
                
             }
             .name{
@@ -81,11 +130,15 @@ export const DashboardStyle = styled.div`
                 font-size: 45px;
                 text-transform: uppercase;
                 letter-spacing: 2px;
+
+                @media(max-width: 767px){
+                    font-size: 30px;
+                }
             }
         }
 
         .right{
-            width:70%;
+            width:100%;
 
             .right-divs{
                 display: flex;
