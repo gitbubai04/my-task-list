@@ -11,12 +11,22 @@ export const AuthWrap = styled.section`
     align-items:center;
     overflow:hidden;
 
+    @media(max-width:767px){
+        align-items:inherit;
+    }
+
     .login-outer-body{
         width:600px;
         display: flex;
         justify-content: center;
         align-items:center;
         flex-direction:column;
+
+        @media(max-width:767px){
+            width:100%;
+            padding:15px;
+            justify-content: start;
+        }
     }
 
     .auth-button-wrap{
