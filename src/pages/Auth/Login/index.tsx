@@ -4,8 +4,9 @@ import TextField from '@mui/material/TextField'
 import { LoginErorType, LoginFormType } from '../../../Helper/Type'
 import { ToastService } from '../../../Helper/Alert'
 import { useNavigate } from 'react-router-dom'
+import MuiPasswordField from '../../../components/MuiPasswordField'
 
-function Login(props:any) {
+function Login(props: any) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState<LoginFormType>({
     email: '',
@@ -52,8 +53,8 @@ function Login(props:any) {
     const hasError = validateForm();
 
     if (!hasError) {
-      const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');      
-      const user = existingUsers.find(        
+      const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+      const user = existingUsers.find(
         (u: any) => u.email === formData.email && u.password === formData.password
       );
 
@@ -90,11 +91,7 @@ function Login(props:any) {
           />
         </div>
         <div className='form-field'>
-          <TextField
-            InputProps={{ style: { borderRadius: "15px", height: 58 } }}
-            fullWidth
-            id=""
-            type='password'
+          <MuiPasswordField
             label="Password"
             name='password'
             value={formData.password}

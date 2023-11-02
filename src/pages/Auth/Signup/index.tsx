@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField'
 import { FormDataError, FormDataType } from '../../../Helper/Type';
 import { SCREEN } from '..';
 import { ToastService } from '../../../Helper/Alert';
+import MuiPasswordField from '../../../components/MuiPasswordField';
 
 function Signup(props: any) {
   const [formData, setFormData] = useState<FormDataType>({
@@ -169,32 +170,25 @@ function Signup(props: any) {
           />
         </div>
         <div className='form-field'>
-          <TextField
-            InputProps={{ style: { borderRadius: "15px", height: 58 } }}
-            fullWidth
-            id=""
+          <MuiPasswordField
             label="Password"
             name='password'
             value={formData.password}
             onChange={handleChange}
             error={!!errors.passwordError}
             helperText={errors.passwordError}
-            type='password'
           />
         </div>
         <div className='form-field'>
-          <TextField
-            InputProps={{ style: { borderRadius: "15px", height: 58 } }}
-            fullWidth
-            id=""
+          <MuiPasswordField
             label="Confirm Password"
             name='confirmPassword'
             value={formData.confirmPassword}
             onChange={handleChange}
             error={!!errors.confirmPasswordError}
             helperText={errors.confirmPasswordError}
-            type='password'
           />
+          
         </div>
         <SubmitBtn type='submit'>Sign up</SubmitBtn>
       </form>

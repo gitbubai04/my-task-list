@@ -9,6 +9,7 @@ import { ChangePasswordError } from '../../../Helper/Type';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import EditIcon from '@mui/icons-material/Edit';
+import MuiPasswordField from '../../../components/MuiPasswordField';
 
 function MyProfile({ userData, getUserData }: any) {
   const [openField, setOpenField] = useState(true)
@@ -214,7 +215,7 @@ function MyProfile({ userData, getUserData }: any) {
           <form onSubmit={handelSubmit}>
             <Grid container spacing={2}>
               <Grid item md={6} xs={12}>
-                <TextField
+                {/* <TextField
                   label='New password'
                   type='password'
                   fullWidth
@@ -223,21 +224,25 @@ function MyProfile({ userData, getUserData }: any) {
                   onChange={handleChange}
                   error={!!errors.passwordError}
                   helperText={errors.passwordError}
+                /> */}
+                <MuiPasswordField
+                  label='New password'
+                  name='password'
+                  value={formData.password}
+                  onChange={handleChange}
+                  error={!!errors.passwordError}
+                  helperText={errors.passwordError}
                 />
-
               </Grid>
               <Grid item md={6} xs={12}>
-                <TextField
+                <MuiPasswordField
                   label='Conferm password'
-                  type='password'
-                  fullWidth
                   name='conPassword'
                   value={formData.conPassword}
                   onChange={handleChange}
                   error={!!errors.confirmPasswordError}
                   helperText={errors.confirmPasswordError}
                 />
-
               </Grid>
               <Grid item md={12} xs={12}>
                 <Button variant='outlined' sx={{ float: 'right' }} type='submit'>Update Password</Button>

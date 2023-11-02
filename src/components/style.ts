@@ -8,3 +8,14 @@ export const Main = styled.main`
         padding:70px 15px 50px 15px;
     }
 `
+
+export const PassWrap = styled.div`
+    position:relative;
+
+    .eyeBtn{
+        position:absolute;
+        right: 10px;
+        top: 10px;
+       
+    }
+`
